@@ -1,0 +1,13 @@
+sudo apt update
+sudo apt install -y libspdlog-dev libopencv-dev libudev-dev libfmt-dev
+
+cd ~/your_name_folder/usrlib
+sudo cp * /usr/lib
+如果是2004的系统的话：
+cd ~/your_name_folder/usrlib/2004
+sudo cp * /usr/lib
+
+cd ~/your_name_folder/src
+export CPLUS_INCLUDE_PATH=/your_name_folder/include:$CPLUS_INCLUDE_PATH
+g++ main.cpp  -L./include -lmylibti5_2004 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2004下)
+g++ main.cpp  -L./include -lmylibti5 -L./include/can -lmylibscan -lcontrolcan  -lfmt -ludev -o move_sov(在ubuntu2204下)

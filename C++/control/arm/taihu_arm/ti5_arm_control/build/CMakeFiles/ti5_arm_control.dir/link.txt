@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/ti5_arm_control.dir/src/arm_control.cpp.o -o ti5_arm_control   -L/home/aaeon/ti5_arm_control/lib  -L/home/aaeon/ti5_arm_control/include/can  -Wl,-rpath,/home/aaeon/ti5_arm_control/lib:/home/aaeon/ti5_arm_control/include/can -lmylibti5_arm_2004 -lcontrolcan -lfmt -ludev -lpthread 

@@ -1,0 +1,3 @@
+/home/aaeon/ti5_arm_control/build/CMakeFiles/ti5_arm_control.dir
+/home/aaeon/ti5_arm_control/build/CMakeFiles/edit_cache.dir
+/home/aaeon/ti5_arm_control/build/CMakeFiles/rebuild_cache.dir
