@@ -1,0 +1,6 @@
+# 请求部分
+int32 action_num         # 动作编号
+---
+# 响应部分
+int32 action_execution_feedback  # 动作执行反馈：执行完毕返回true
+

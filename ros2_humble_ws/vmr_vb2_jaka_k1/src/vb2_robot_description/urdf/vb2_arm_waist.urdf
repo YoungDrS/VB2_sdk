@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="vb2_robot_description">
+  <link name="base_link"/>
+  <link name="body_link">
+    <inertial>
+      <origin xyz="-0.0251970799044455 8.52868180189679E-06 0.231530116008172" rpy="0 0 0" />
+      <mass value="10.958069761735" />
+      <inertia ixx="0.341839960083521" ixy="0.000982624278230509" ixz="0.0267988976156032" iyy="0.371180255026502" iyz="-0.000918163031179973" izz="0.473117101150532" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="body_joint" type="fixed">
+    <origin xyz="0 0 0.0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="body_link" />
+  </joint>
+
+
+  <link name="waist_lift_link">
+    <inertial>
+      <origin xyz="0.00012524 0.00097659 5.8284E-05" rpy="0 0 0" />
+      <mass value="1.4015" />
+      <inertia ixx="0.026179" ixy="-8.7251E-06" ixz="-0.00014781" iyy="0.017166" iyz="-0.00035677" izz="0.016586" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/waist_lift_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/waist_lift_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="waist_lift_joint" type="prismatic">
+    <!-- !USM <origin xyz="0.1 0 0.6455" rpy="0 0 0" /> -->
+    <!-- !vb2-1 -->
+    <origin xyz="0.1 0 0.633" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="waist_lift_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.25" effort="0" velocity="0" />
+  </joint>
+  <link name="waist_rotate_link">
+    <inertial>
+      <origin xyz="-0.003779 -0.0018054 0.17212" rpy="0 0 0" />
+      <mass value="4.8011" />
+      <inertia ixx="0.10715" ixy="1.9407E-05" ixz="0.0039927" iyy="0.094296" iyz="-0.00028871" izz="0.047274" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/waist_rotate_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/waist_rotate_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="waist_rotate_joint" type="revolute">
+    <origin xyz="0 0 0.125" rpy="0 0 0" />
+    <parent link="waist_lift_link" />
+    <child link="waist_rotate_link" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.785" upper="0" effort="0" velocity="0" />
+  </joint>
+  
+  <link name="jaka_left_link">
+    <inertial>
+      <origin xyz="1.3878E-17 -0.0025 -4.4409E-16" rpy="0 0 0" />
+      <mass value="0.0035343" />
+      <inertia ixx="2.0617E-07" ixy="-2.0885E-23" ixz="2.4694E-38" iyy="3.9761E-07" iyz="4.1206E-24" izz="2.0617E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/jaka_left_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/jaka_left_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="jaka_left_joint" type="fixed">
+    <!-- !USM <origin xyz="0 0.03 0.368" rpy="0 0 0" /> -->
+    <!-- !vb2-1 -->
+    <!-- <origin xyz="0 0.03 0.35" rpy="0 0 0" />
+    <parent link="waist_rotate_link" /> -->
+    <!-- 标定后 -->
+    <origin xyz="-0.051893149 -0.234210701 -0.103264933" rpy="2.917451 -1.539174 -1.351978" />
+    <parent link="HS3310_link" />
+    <child link="jaka_left_link" />
+  </joint>
+  <link name="jaka_right_link">
+    <inertial>
+      <origin xyz="-2.7756E-17 0.0025 0" rpy="0 0 0" />
+      <mass value="0.0035343" />
+      <inertia ixx="2.0617E-07" ixy="3.9632E-23" ixz="2.5996E-38" iyy="3.9761E-07" iyz="4.1206E-24" izz="2.0617E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/jaka_right_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/body/jaka_right_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="jaka_right_joint" type="fixed">
+    <!-- !USM <origin xyz="0 -0.03 0.368" rpy="0 0 0" /> -->
+    <!-- !vb2-1 -->
+    <!-- <origin xyz="0 -0.03 0.35" rpy="0 0 0" />
+    <parent link="waist_rotate_link" /> -->
+    <!-- 标定后 -->
+    <origin xyz="0.008920934 -0.241096213 -0.102657644 " rpy="2.274 -1.539 -0.697" />
+    <parent link="HS3310_link" />
+    <child link="jaka_right_link" />
+  </joint>
+
+  <!-- jaka left arm -->
+  <link name="jaka_left_base_link">
+    <inertial>
+      <origin xyz="-1.11166631455717E-12 6.05753558424738E-10 0.0527092716866375" rpy="0 0 0" />
+      <mass value="2.65143721613807" />
+      <inertia ixx="0.00475738389153103" ixy="-5.95934896029248E-12" ixz="-9.09286133435972E-14" iyy="0.00459825420119207" iyz="-2.97976271757394E-11" izz="0.00370585568871224" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="jaka_left_base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707963 0 0" />
+    <parent link="jaka_left_link" />
+    <child link="jaka_left_base_link" />
+  </joint>
+  <link name="l1">
+    <inertial>
+      <origin xyz="-2.46089259270388E-06 -2.84970803954288E-07 0.164287024147324" rpy="0 0 0" />
+      <mass value="1.4907907847092" />
+      <inertia ixx="0.0030595188968923" ixy="1.23224145473104E-07" ixz="4.7234802831064E-08" iyy="0.00378376232211127" iyz="-3.76862386224473E-08" izz="0.00212531859055589" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j1" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 -1.5708" />
+    <parent link="jaka_left_base_link" />
+    <child link="l1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2831" upper="6.2831" effort="0" velocity="0" />
+  </joint>
+  <link name="l2">
+    <inertial>
+      <origin xyz="-0.00348811639068414 -0.0451640844014566 -0.000762978610482329" rpy="0 0 0" />
+      <mass value="2.70256692795753" />
+      <inertia ixx="0.00982602108227595" ixy="-0.000302421298853649" ixz="7.23672460560105E-06" iyy="0.00590953952283702" iyz="9.32631657353728E-05" izz="0.00747854000665196" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j2" type="revolute">
+    <origin xyz="0 0 0.203" rpy="-1.5708 0 0" />
+    <parent link="l1" />
+    <child link="l2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.8325" upper="1.8325" effort="0" velocity="0" />
+  </joint>
+  <link name="l3">
+    <inertial>
+      <origin xyz="-0.00699746985937827 -0.000446252744778108 0.236700984606428" rpy="0 0 0" />
+      <mass value="3.5479020475757" />
+      <inertia ixx="0.0185299155929474" ixy="1.22555145339142E-06" ixz="0.000124487295297341" iyy="0.0186988857034901" iyz="-1.68829932415711E-05" izz="0.00375501658944992" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j3" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 3.1416" />
+    <parent link="l2" />
+    <child link="l3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2831" upper="6.2831" effort="0" velocity="0" />
+  </joint>
+  <link name="l4">
+    <inertial>
+      <origin xyz="0.00585740744905894 -0.0314019238103633 0.000428273273246155" rpy="0 0 0" />
+      <mass value="1.47373567274524" />
+      <inertia ixx="0.00377869099038954" ixy="0.000218862142889913" ixz="-9.99763645881045E-08" iyy="0.00227042793327652" iyz="8.03576591258955E-06" izz="0.00281134195603674" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j4" type="revolute">
+    <origin xyz="0.00040047 0 0.3405" rpy="-1.5708 0 -3.1416" />
+    <parent link="l3" />
+    <child link="l4" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.5307" upper="0.5235" effort="0" velocity="0" />
+  </joint>
+  <link name="l5">
+    <inertial>
+      <origin xyz="-2.89934462277541E-06 0.00407892339164011 0.183529656371899" rpy="0 0 0" />
+      <mass value="2.28083614923683" />
+      <inertia ixx="0.00549246978922256" ixy="2.00179486326029E-07" ixz="2.24427581574717E-07" iyy="0.00557866184825314" iyz="-0.000384181497552219" izz="0.00195895181252497" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j5" type="revolute">
+    <origin xyz="0 0 0" rpy="-1.5708 0 -3.1416" />
+    <parent link="l4" />
+    <child link="l5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2831" upper="6.2831" effort="0" velocity="0" />
+  </joint>
+  <link name="l6">
+    <inertial>
+      <origin xyz="-1.74515663808883E-07 -0.0869630242340927 0.00555273370174895" rpy="0 0 0" />
+      <mass value="1.76168273075004" />
+      <inertia ixx="0.0044404168516555" ixy="2.375821924305E-08" ixz="6.28763061286534E-09" iyy="0.00157714240799763" iyz="-0.00076969127576894" izz="0.00425162477583013" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j6" type="revolute">
+    <origin xyz="0 0 0.22694" rpy="-1.5708 0 -3.1416" />
+    <parent link="l5" />
+    <child link="l6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.5707" upper="1.5707" effort="0" velocity="0" />
+  </joint>
+  <link name="l7">
+    <inertial>
+      <origin xyz="2.69418597542703E-07 -2.94990448034826E-05 0.176217274894146" rpy="0 0 0" />
+      <mass value="0.634983447813082" />
+      <inertia ixx="0.000369700889597726" ixy="3.07621123817192E-13" ixz="2.61093000823341E-13" iyy="0.000370207332440143" iyz="4.29842702140501E-07" izz="0.000512144747874418" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/l7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_j7" type="revolute">
+    <origin xyz="0 0 0" rpy="1.5708 0 0" />
+    <parent link="l6" />
+    <child link="l7" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2831" upper="6.2831" effort="0" velocity="0" />
+  </joint>
+  <link name="lt">
+    <inertial>
+      <origin xyz="1.11022302462516E-16 1.38777878078145E-17 -0.00100000000000011" rpy="0 0 0" />
+      <mass value="0.00155862265526231" />
+      <inertia ixx="9.71784989903392E-08" ixy="2.00584569560588E-24" ixz="-1.11669382694659E-23" iyy="9.71784989903392E-08" iyz="2.69722272003375E-24" izz="1.93317916210503E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/lt.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_left_arm/lt.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="l_t" type="fixed">
+    <origin xyz="0 0 0.18827" rpy="0 0 0" />
+    <parent link="l7" />
+    <child link="lt" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="left_tool_link"/>
+  <joint name="left_tool_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="lt" />
+    <child link="left_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- jaka right arm -->
+  <link name="jaka_right_base_link">
+    <inertial>
+      <origin xyz="1.11166631455717E-12 -6.05753558424738E-10 0.0527092716866375" rpy="0 0 0" />
+      <mass value="2.65143721613807" />
+      <inertia ixx="0.00475738389153103" ixy="-5.95934905864509E-12" ixz="9.0928659444995E-14" iyy="0.00459825420119207" iyz="2.97976273849371E-11" izz="0.00370585568871224" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="jaka_right_base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707963 0 3.1415926" />
+    <parent link="jaka_right_link" />
+    <child link="jaka_right_base_link" />
+  </joint>
+  <link name="r1">
+    <inertial>
+      <origin xyz="2.46089330108168E-06 2.84970774561133E-07 0.164287024147328" rpy="0 0 0" />
+      <mass value="1.49079078470936" />
+      <inertia ixx="0.00305951889689259" ixy="1.23224145473539E-07" ixz="-4.72348068028591E-08" iyy="0.00378376232211153" iyz="3.76862388648401E-08" izz="0.00212531859055613" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j1" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 1.5708" />
+    <parent link="jaka_right_base_link" />
+    <child link="r1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2832" upper="6.2832" effort="0" velocity="0" />
+  </joint>
+  <link name="r2">
+    <inertial>
+      <origin xyz="-1.71093757583285E-05 -0.0452985721312201 0.000762955289202616" rpy="0 0 0" />
+      <mass value="2.70256307184883" />
+      <inertia ixx="0.00984922872707276" ixy="-3.34424080735711E-06" ixz="1.12868357873839E-09" iyy="0.00588632047318316" iyz="-9.35439174939498E-05" izz="0.00747853193882275" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j2" type="revolute">
+    <origin xyz="0 0 0.2075" rpy="-1.5708 0 0" />
+    <parent link="r1" />
+    <child link="r2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.8325" upper="1.8325" effort="0" velocity="0" />
+  </joint>
+  <link name="r3">
+    <inertial>
+      <origin xyz="0.00699731121913066 -0.000445772591236654 -0.236701008892725" rpy="0 0 0" />
+      <mass value="3.54789151285921" />
+      <inertia ixx="0.0185299010490046" ixy="-1.22457898248011E-06" ixz="0.00012448607887989" iyy="0.0186988856311153" iyz="1.6911908257329E-05" izz="0.00375500728039875" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j3" type="revolute">
+    <origin xyz="0 0 0" rpy="1.5708 0 3.1416" />
+    <parent link="r2" />
+    <child link="r3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-6.2832" upper="6.2832" effort="0" velocity="0" />
+  </joint>
+  <link name="r4">
+    <inertial>
+      <origin xyz="0.00464514398879598 0.0316039478429687 -0.000428086479630468" rpy="0 0 0" />
+      <mass value="1.47374255934675" />
+      <inertia ixx="0.00379329381039364" ixy="-0.000160244555641476" ixz="-2.06625013224252E-07" iyy="0.00225584782324939" iyz="8.0342550870751E-06" izz="0.00281134501628177" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j4" type="revolute">
+    <origin xyz="-0.00040046 0 -0.33028" rpy="-1.5708 0 0" />
+    <parent link="r3" />
+    <child link="r4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-2.5307" upper="0.5235" effort="0" velocity="0" />
+  </joint>
+  <link name="r5">
+    <inertial>
+      <origin xyz="2.21934846231231E-06 -0.00407989097946271 0.183530137971577" rpy="0 0 0" />
+      <mass value="2.28087661840322" />
+      <inertia ixx="0.00549252085210875" ixy="1.62381294089941E-07" ixz="-1.62547546702497E-07" iyy="0.00557867055594488" iyz="0.000384258276813551" izz="0.0019590051756608" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j5" type="revolute">
+    <origin xyz="0 0 0" rpy="1.5708 0 -3.1416" />
+    <parent link="r4" />
+    <child link="r5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2832" upper="6.2832" effort="0" velocity="0" />
+  </joint>
+  <link name="r6">
+    <inertial>
+      <origin xyz="-1.87505902221607E-07 -0.0869630161568319 0.0055480090278294" rpy="0 0 0" />
+      <mass value="1.76168294752248" />
+      <inertia ixx="0.00444041795923784" ixy="2.4494168178014E-08" ixz="6.87068564705225E-09" iyy="0.00157714249117262" iyz="-0.000769691499829544" izz="0.00425162601622334" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j6" type="revolute">
+    <origin xyz="0 0 0.23494" rpy="-1.5708 0 0" />
+    <parent link="r5" />
+    <child link="r6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.8325" upper="1.8325" effort="0" velocity="0" />
+  </joint>
+  <link name="r7">
+    <inertial>
+      <origin xyz="1.42835471839131E-07 -3.41914556708789E-05 0.176217274900879" rpy="0 0 0" />
+      <mass value="0.634983447813083" />
+      <inertia ixx="0.0003697008895978" ixy="-3.08834639143619E-13" ixz="-1.0233696538607E-10" iyy="0.000370207332605644" iyz="4.29870025767548E-07" izz="0.000512144747708847" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r7.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/r7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_j7" type="revolute">
+    <origin xyz="0 0 0" rpy="1.5708 0 0" />
+    <parent link="r6" />
+    <child link="r7" />
+    <axis xyz="0 0 1" />
+    <limit lower="-6.2832" upper="6.2832" effort="0" velocity="0" />
+  </joint>
+  <link name="rt">
+    <inertial>
+      <origin xyz="7.18437170865727E-10 -1.92504789886527E-10 -0.00099999999999989" rpy="0 0 0" />
+      <mass value="0.00155862265526229" />
+      <inertia ixx="9.71784989903875E-08" ixy="-1.32871153202434E-20" ixz="-6.90701328589823E-14" iyy="9.71784989903415E-08" iyz="1.85072947766703E-14" izz="1.93317916210448E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/rt.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vb2_robot_description/meshes/jaka_right_arm/rt.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="r_t" type="fixed">
+    <origin xyz="0 0 0.18827" rpy="0 0 0" />
+    <parent link="r7" />
+    <child link="rt" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="right_tool_link"/>
+  <joint name="right_tool_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="rt" />
+    <child link="right_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="HS3310_link"/>
+  <joint name="HS3310_joint" type="fixed">
+    <!-- <origin xyz="0.096504 0 0.12297" rpy="-1.5708 0 -1.5708" /> -->
+    <!-- 标定后补偿0.03−0.008920934=0.021079066 -->
+    <origin xyz="0.096504 -0.021079066 0.12297" rpy="-1.5708 0 -1.5708" />
+    <parent link="waist_rotate_link" />
+    <child link="HS3310_link" />
+  </joint>
+ 
+</robot>

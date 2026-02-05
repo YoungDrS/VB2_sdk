@@ -1,2 +1,2 @@
-# VB2_sdk
-sdk for VB2
+# 全身ROS2-Moveit2控制程序
+

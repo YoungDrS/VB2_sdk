@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="vb2_taihu_inspire_gripper_description">
+  <link name="base_link"/>
+  <link name="body_chassis">
+    <inertial>
+      <origin xyz="-0.096792 -9.9031E-05 0.30843" rpy="0 0 0" />
+      <mass value="21.266" />
+      <inertia ixx="0.30416" ixy="1.4537E-05" ixz="0.0030781" iyy="0.21001" iyz="-0.00017572" izz="0.408" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="body_chassis_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="body_chassis" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="waist_lift_link">
+    <inertial>
+      <origin xyz="9.35786705729691E-05 0.000526248446513666 -0.134656032063535" rpy="0 0 0" />
+      <mass value="2.98111051671682" />
+      <inertia ixx="0.0380648328721393" ixy="-1.60953667666745E-05" ixz="0.000313495599562606" iyy="0.0277541385437744" iyz="-6.83478131157051E-06" izz="0.0188524975187698" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/waist_lift_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/waist_lift_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="waist_lift_joint" type="prismatic">
+    <origin xyz="0.1 0 0.602" rpy="0 0 0" />
+    <!-- <origin xyz="0.1 0 0.802" rpy="0 0 0" /> -->
+    <parent link="body_chassis" />
+    <child link="waist_lift_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.2" effort="30" velocity="3.56" />
+  </joint>
+  
+  <link name="waist_rotate_link">
+    <inertial>
+      <origin xyz="0.00710158164145008 -0.000534771875868256 0.263996584547771" rpy="0 0 0" />
+      <mass value="3.51115804647033" />
+      <inertia ixx="0.0639584671788603" ixy="-1.5686242071251E-05" ixz="0.00013071119050801" iyy="0.0367449233023776" iyz="5.55605126472755E-05" izz="0.0337348771004249" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/waist_rotate_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/waist_rotate_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="waist_rotate_joint" type="revolute">
+    <origin xyz="0 0 0.07" rpy="0 0 0" />
+    <parent link="waist_lift_link" />
+    <child link="waist_rotate_link" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.785" upper="0" effort="30" velocity="3.56" />
+  </joint>
+
+  <!-- !==========左臂========== -->
+  <link name="left_arm_link"/>
+  <joint name="left_arm_joint" type="fixed">
+    <origin xyz="0 0.1762 0.368" rpy="0 0 0" />
+    <parent link="waist_rotate_link" />
+    <child link="left_arm_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="L_SHOULDER_P_S">
+    <inertial>
+      <origin xyz="0.02306018 0.05800067 -0.00030962" rpy="0 0 0" />
+      <mass value="0.94134337" />
+      <inertia ixx="0.00077406" ixy="-0.00010231" ixz="4.4E-07" iyy="0.00050444" iyz="2.13E-06" izz="0.00070404" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂1关节 -->
+  <joint name="L_SHOULDER_P" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="left_arm_link" />
+    <child link="L_SHOULDER_P_S" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14" upper="3.14" effort="66" velocity="4.294" />
+  </joint>
+  <link name="L_SHOULDER_R_S">
+    <inertial>
+      <origin xyz="-0.00310861 -6.76E-06 -0.11208467" rpy="1.570796 0 0" />
+      <mass value="0.52003545" />
+      <inertia ixx="0.00057184" ixy="-2E-08" ixz="0.00013308" iyy="0.00063681" iyz="2.5E-07" izz="0.00028464" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_R_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_R_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂2关节 -->
+  <joint name="L_SHOULDER_R" type="revolute">
+    <origin xyz="0 0.063149999999998 0" rpy="0 0 0" />
+    <parent link="L_SHOULDER_P_S" />
+    <child link="L_SHOULDER_R_S" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.5708" upper="0.5236" effort="66" velocity="4.294" />
+  </joint>
+  <link name="L_SHOULDER_Y_S">
+    <inertial>
+      <origin xyz="-0.00011888 -0.0024562 -0.13942517" rpy="1.570796 0 0" />
+      <mass value="0.66125487" />
+      <inertia ixx="0.0010406" ixy="-1.91E-06" ixz="-8.4E-07" iyy="0.0010091" iyz="-2.925E-05" izz="0.00033455" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_Y_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_SHOULDER_Y_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂3关节 -->
+  <joint name="L_SHOULDER_Y" type="revolute">
+    <origin xyz="0 0.11505 0" rpy="0 0 0" />
+    <parent link="L_SHOULDER_R_S" />
+    <child link="L_SHOULDER_Y_S" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14" upper="3.14" effort="34" velocity="5.131" />
+  </joint>
+  <link name="L_ELBOW_Y_S">
+    <inertial>
+      <origin xyz="0 0.00111108 -0.07133032" rpy="1.570796 0 0" />
+      <mass value="0.45089673" />
+      <inertia ixx="0.00051798" ixy="-2E-08" ixz="3E-08" iyy="0.00045086" iyz="-2.784E-05" izz="0.00025023" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_ELBOW_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_ELBOW_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂4关节 -->
+  <joint name="L_ELBOW_Y" type="revolute">
+    <origin xyz="0 0.15495 0" rpy="0 0 0" />
+    <parent link="L_SHOULDER_Y_S" />
+    <child link="L_ELBOW_Y_S" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.74532" upper="0" effort="34" velocity="5.131" />
+  </joint>
+  <link name="L_WRIST_P_S">
+    <inertial>
+      <origin xyz="6.656E-05 0.01487269 -0.08609097" rpy="1.570796 0 0" />
+      <mass value="0.39306129" />
+      <inertia ixx="0.00038303" ixy="1.07E-06" ixz="-1.2E-06" iyy="0.00028556" iyz="7.233E-05" izz="0.00024115" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_R_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_R_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂5关节 -->
+  <joint name="L_WRIST_P" type="revolute">
+    <origin xyz="0 0.0805 0" rpy="0 0 0" />
+    <parent link="L_ELBOW_Y_S" />
+    <child link="L_WRIST_P_S" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14" upper="3.14" effort="11" velocity="6.178" />
+  </joint>
+  <link name="L_WRIST_Y_S">
+    <inertial>
+      <origin xyz="-0.00479045 0.00149666 0" rpy="1.570796 0 0" />
+      <mass value="0.34864595" />
+      <inertia ixx="0.00013418" ixy="-4.83E-06" ixz="0" iyy="0.00016113" iyz="0" izz="0.00017597" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂6关节 -->
+  <joint name="L_WRIST_Y" type="revolute">
+    <origin xyz="0 0.17 0" rpy="0 0 0" />
+    <parent link="L_WRIST_P_S" />
+    <child link="L_WRIST_Y_S" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.95" upper="0.95" effort="11" velocity="6.178" />
+  </joint>
+  <link name="L_WRIST_R_S">
+    <inertial>
+      <origin xyz="-0.04586295 0 0.00174536" rpy="1.570796 0 0" />
+      <mass value="0.01373572" />
+      <inertia ixx="3.44E-06" ixy="0" ixz="-6E-08" iyy="1.88E-06" iyz="0" izz="1.66E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_Y_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/L_WRIST_Y_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 左臂7关节 -->
+  <joint name="L_WRIST_R" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="L_WRIST_Y_S" />
+    <child link="L_WRIST_R_S" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.5533" upper="1.2217" effort="11" velocity="6.178" />
+  </joint>
+  <link name="L_HAND_S">
+    <inertial>
+      <origin xyz="0 0 0" rpy="1.570796 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+  </link>
+  <joint name="L_HAND" type="fixed">
+    <origin xyz="0 0.08 0" rpy="0 0 0" />
+    <parent link="L_WRIST_R_S" />
+    <child link="L_HAND_S" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+
+  <!-- !==========右臂========== -->
+  <link name="right_arm_link"/>
+  <joint name="right_arm_joint" type="fixed">
+    <origin xyz="0 -0.1758 0.368" rpy="0 0 0" />
+    <parent link="waist_rotate_link" />
+    <child link="right_arm_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="R_SHOULDER_P_S">
+    <inertial>
+      <origin xyz="0.02293897 -0.0577495 -0.00022748" rpy="0 0 0" />
+      <mass value="0.94134934" />
+      <inertia ixx="0.00077161" ixy="0.00010033" ixz="-2E-08" iyy="0.00050309" iyz="-1.73E-06" izz="0.00070026" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂1关节 -->
+  <joint name="R_SHOULDER_P" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="right_arm_link" />
+    <child link="R_SHOULDER_P_S" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-3.14" upper="3.14" effort="66" velocity="4.294" />
+  </joint> 
+  <link name="R_SHOULDER_R_S">
+    <inertial>
+      <origin xyz="-0.00322888 6.79E-06 -0.11236224" rpy="-1.570796 0 0" />
+      <mass value="0.5180269" />
+      <inertia ixx="0.00056139" ixy="2E-08" ixz="0.00013756" iyy="0.00062452" iyz="-2.5E-07" izz="0.00028258" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_R_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_R_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂2关节 -->
+  <joint name="R_SHOULDER_R" type="revolute">
+    <origin xyz="0 -0.0631499999999992 0" rpy="0 0 0" />
+    <parent link="R_SHOULDER_P_S" />
+    <child link="R_SHOULDER_R_S" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.5236" upper="1.5708" effort="66" velocity="4.294" />
+  </joint>
+  <link name="R_SHOULDER_Y_S">
+    <inertial>
+      <origin xyz="-0.00011909 0.00245618 -0.13942545" rpy="-1.570796 0 0" />
+      <mass value="0.66124599" />
+      <inertia ixx="0.0010406" ixy="1.9E-06" ixz="-8.6E-07" iyy="0.0010091" iyz="2.925E-05" izz="0.00033453" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_Y_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_SHOULDER_Y_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂3关节 -->
+  <joint name="R_SHOULDER_Y" type="revolute">
+    <origin xyz="0 -0.115050000000001 0" rpy="0 0 0" />
+    <parent link="R_SHOULDER_R_S" />
+    <child link="R_SHOULDER_Y_S" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-3.14" upper="3.14" effort="34" velocity="5.131" />
+  </joint>
+  <link name="R_ELBOW_Y_S">
+    <inertial>
+      <origin xyz="0 -0.00175413 -0.07239164" rpy="-1.570796 0 0" />
+      <mass value="0.44428408" />
+      <inertia ixx="0.00047026" ixy="0" ixz="0" iyy="0.00041461" iyz="4.852E-05" izz="0.00023666" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_ELBOW_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_ELBOW_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂4关节 -->
+  <joint name="R_ELBOW_Y" type="revolute">
+    <origin xyz="0 -0.15495 0" rpy="0 0 0" />
+    <parent link="R_SHOULDER_Y_S" />
+    <child link="R_ELBOW_Y_S" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="1.74532" effort="34" velocity="5.131" />
+  </joint>
+  <link name="R_WRIST_P_S">
+    <inertial>
+      <origin xyz="0 -0.01616134 -0.08634022" rpy="-1.570796 0 0" />
+      <mass value="0.37531925" />
+      <inertia ixx="0.00036279" ixy="0" ixz="0" iyy="0.00027615" iyz="-6.921E-05" izz="0.00022177" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_R_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_R_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂5关节 -->
+  <joint name="R_WRIST_P" type="revolute">
+    <origin xyz="0 -0.0805 0" rpy="0 0 0" />
+    <parent link="R_ELBOW_Y_S" />
+    <child link="R_WRIST_P_S" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-3.14" upper="3.14" effort="11" velocity="6.178" />
+  </joint>
+  <link name="R_WRIST_Y_S">
+    <inertial>
+      <origin xyz="-0.00637912 -0.0013376 1.15E-06" rpy="-1.570796 0 0" />
+      <mass value="0.36952049" />
+      <inertia ixx="0.0001421" ixy="6.39E-06" ixz="0" iyy="0.00018147" iyz="-4.9E-07" izz="0.00019651" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_P_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_P_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂6关节 -->
+  <joint name="R_WRIST_Y" type="revolute">
+    <origin xyz="0 -0.17 0" rpy="0 0 0" />
+    <parent link="R_WRIST_P_S" />
+    <child link="R_WRIST_Y_S" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.95" upper="0.95" effort="11" velocity="6.178" />
+  </joint>
+  <link name="R_WRIST_R_S">
+    <inertial>
+      <origin xyz="-0.04586298 0 0.00174456" rpy="-1.570796 0 0" />
+      <mass value="0.01373536" />
+      <inertia ixx="3.44E-06" ixy="0" ixz="-6E-08" iyy="1.88E-06" iyz="0" izz="1.66E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_Y_S.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.86667 0.86667 0.8902 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/taihu_2_dual_arm/R_WRIST_Y_S.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!-- 右臂7关节 -->
+  <joint name="R_WRIST_R" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="R_WRIST_Y_S" />
+    <child link="R_WRIST_R_S" />
+    <axis xyz="1 0 0" />
+    <limit lower="-1.2217" upper="1.5533" effort="11" velocity="6.178" />
+  </joint>
+  <link name="R_HAND_S">
+    <inertial>
+      <origin xyz="0 0 0" rpy="-1.570796 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+  </link>
+  <joint name="R_HAND" type="fixed">
+    <origin xyz="0 -0.08 0" rpy="0 0 0" />
+    <parent link="R_WRIST_R_S" />
+    <child link="R_HAND_S" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+
+  <!-- !==========inspire_gripper========== -->
+  <link name="inspire_gripper_left_link">
+    <inertial>
+      <origin xyz="0.00849781246159642 0.0485604884533086 0.0160866640758209" rpy="0 0 0" />
+      <mass value="0.255789274036395" />
+      <inertia ixx="0.000144391433986884" ixy="9.0529571239783E-07" ixz="-4.18669467863225E-06" iyy="0.000115151283627934" iyz="-1.14753277600552E-06" izz="0.000211073715983208" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/inspire_gripper/inspire_gripper_left_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/inspire_gripper/inspire_gripper_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="inspire_gripper_left_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="L_HAND_S" />
+    <child link="inspire_gripper_left_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="left_tool_link"/>
+  <joint name="left_tool_joint" type="fixed">
+    <!-- 末端法兰 -->
+    <origin xyz="0 0.15 0" rpy="-1.570795 1.570795 0" />
+    <parent link="inspire_gripper_left_link" />
+    <child link="left_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="left_hand_index_tool_link"/>
+  <joint name="left_hand_index_tool_joint" type="fixed">
+    <!-- 末端法兰 -->
+    <origin xyz="0 0.15 0" rpy="-1.570795 1.570795 0" />
+    <parent link="inspire_gripper_left_link" />
+    <child link="left_hand_index_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="inspire_gripper_right_link">
+    <inertial>
+      <origin xyz="-0.00849781246159675 -0.0485604884533088 0.0160866640758205" rpy="0 0 0" />
+      <mass value="0.255789274036395" />
+      <inertia ixx="0.000144391433986883" ixy="9.05295712397767E-07" ixz="4.1866946786318E-06" iyy="0.000115151283627932" iyz="1.14753277600515E-06" izz="0.000211073715983206" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/inspire_gripper/inspire_gripper_right_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/inspire_gripper/inspire_gripper_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="inspire_gripper_right_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="R_HAND_S" />
+    <child link="inspire_gripper_right_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="right_tool_link"/>
+  <joint name="right_tool_joint" type="fixed">
+    <!-- 末端法兰 -->
+    <origin xyz="0 -0.15 0" rpy="1.570795 1.570795 0" />
+    <parent link="inspire_gripper_right_link" />
+    <child link="right_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="right_hand_index_tool_link"/>
+  <joint name="right_hand_index_tool_joint" type="fixed">
+    <!-- 末端法兰 -->
+    <origin xyz="0 -0.15 0" rpy="1.570795 1.570795 0" />
+    <parent link="inspire_gripper_right_link" />
+    <child link="right_hand_index_tool_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- ==========头部========== -->
+  <link name="head_up_down_link">
+    <inertial>
+      <origin xyz="0 2.13546450764657E-05 0.0155461496634686" rpy="0 0 0" />
+      <mass value="0.00361867724454635" />
+      <inertia ixx="1.51459229720833E-06" ixy="6.11195572598568E-21" ixz="-3.68848355268054E-23" iyy="4.14882713460319E-07" iyz="1.35484422319125E-09" izz="1.38874810980595E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_up_down_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_up_down_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_up_down_joint" type="revolute">
+    <origin xyz="0.016 -5E-05 0.5435" rpy="0 0 0" />
+    <parent link="waist_rotate_link" />
+    <child link="head_up_down_link" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.52" upper="0.52" effort="30" velocity="1.134" />
+  </joint>
+  <link name="head_left_right_link">
+    <inertial>
+      <origin xyz="0.00095134627908583 -1.7173046691632E-05 0.0750693770797661" rpy="0 0 0" />
+      <mass value="0.337958762084243" />
+      <inertia ixx="0.00142506660151733" ixy="-4.46649310551599E-08" ixz="0.000216278330167558" iyy="0.00110911363423776" iyz="3.68823648230338E-07" izz="0.000890868588405528" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_left_right_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_left_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_left_right_joint" type="revolute">
+    <origin xyz="0 0 0.02355" rpy="0 0 0" />
+    <parent link="head_up_down_link" />
+    <child link="head_left_right_link" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.52" upper="0.52" effort="30" velocity="1.134" />
+  </joint>
+
+
+  <!-- ==========相机========== -->
+  <link name="chest_camera_s10_link">
+    <inertial>
+      <origin xyz="0.0153900370513814 1.90174853758052E-05 -0.0172114033004554" rpy="0 0 0" />
+      <mass value="0.0329570996448926" />
+      <inertia ixx="3.55901701819945E-06" ixy="3.67019770795347E-08" ixz="1.35934774978516E-07" iyy="2.29463509363535E-05" iyz="-1.84232375412871E-09" izz="2.46905475046788E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/chest_camera_s10_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/chest_camera_s10_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="chest_camera_s10_joint" type="fixed">
+    <origin xyz="0.11496 0.0181 0.36822" rpy="-2.3562 0 -1.5708" />
+    <parent link="waist_rotate_link" />
+    <child link="chest_camera_s10_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="head_camera_s10_link">
+    <inertial>
+      <origin xyz="0.0153899086981656 1.90215692355E-05 -0.0172114231363034" rpy="0 0 0" />
+      <mass value="0.0329570934678597" />
+      <inertia ixx="3.55903029246775E-06" ixy="3.67014931887596E-08" ixz="1.35936993526136E-07" iyy="2.2946303314556E-05" iyz="-1.8438861117843E-09" izz="2.46905071645693E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_camera_s10_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://taihu_dual_arm_description/meshes/vb2_s/head_camera_s10_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="head_camera_s10_joint" type="fixed">
+    <origin xyz="0.0707703230305258 0.01789862929923 0.0758902728746043" rpy="-1.68424272817452 0 -1.57079632667656" />
+    <parent link="head_left_right_link" />
+    <child link="head_camera_s10_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>

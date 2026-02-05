@@ -1,0 +1,8 @@
+# 请求部分
+string arm_command    # 机械臂指令；JSON结构；
+                      # 双臂动作指令："dual_arm_action" "1"
+                      # 左臂pose指令："left_arm_pose" "[x,y,z,qx,qy,qz,qw]"
+                      # 右臂pose指令："right_arm_pose" "[x,y,z,qx,qy,qz,qw]"
+---
+# 响应部分
+string feedback    # 反馈

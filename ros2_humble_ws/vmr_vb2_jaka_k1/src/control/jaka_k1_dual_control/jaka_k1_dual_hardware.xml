@@ -1,0 +1,9 @@
+<library path="jaka_k1_dual_control">
+  <class name="jaka_dual_control/JakaDualHardware"
+         type="jaka_dual_control::JakaDualHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+    BraincoRevo1SystemHardware using a system hardware interface-type.
+    </description>
+  </class>
+</library>

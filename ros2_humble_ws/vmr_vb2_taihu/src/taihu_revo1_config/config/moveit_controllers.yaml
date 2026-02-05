@@ -1,0 +1,53 @@
+trajectory_execution:
+# 此参数缩放运动计划的执行持续时间。缩放因子为1.2表示计划可以比原始计划的时间长20%。
+  allowed_execution_duration_scaling: 1.2
+# 目标持续时间设置了一个边距。在这种情况下，允许额外0.5秒来实现目标。
+  allowed_goal_duration_margin: 0.5
+# 允许的机器人起始状态的容差。0.01的容差表示起始状态应在指定的起始状态的0.01单位范围内。
+  allowed_start_tolerance: 0.01
+# 当设置为true时，MoveIt会监视计划轨迹的持续时间
+  trajectory_duration_monitoring: true
+
+  
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - left_arm_controller
+    - right_arm_controller
+    - waist_group_controller
+
+  left_arm_controller:
+    type: FollowJointTrajectory
+    joints:
+      - L_SHOULDER_P
+      - L_SHOULDER_R
+      - L_SHOULDER_Y
+      - L_ELBOW_Y
+      - L_WRIST_P
+      - L_WRIST_Y
+      - L_WRIST_R
+    action_ns: follow_joint_trajectory
+    default: true
+
+  right_arm_controller:
+    type: FollowJointTrajectory
+    joints:
+      - R_SHOULDER_P
+      - R_SHOULDER_R
+      - R_SHOULDER_Y
+      - R_ELBOW_Y
+      - R_WRIST_P
+      - R_WRIST_Y
+      - R_WRIST_R
+    action_ns: follow_joint_trajectory
+    default: true
+    
+  waist_group_controller:
+    type: FollowJointTrajectory
+    joints:
+      - waist_lift_joint
+      - waist_rotate_joint
+    action_ns: follow_joint_trajectory
+    default: true

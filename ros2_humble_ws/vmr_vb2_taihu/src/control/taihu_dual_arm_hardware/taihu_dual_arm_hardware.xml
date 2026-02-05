@@ -1,0 +1,9 @@
+<library path="taihu_dual_arm_hardware">
+    <class name="taihu_dual_arm_hardware/TaihuDualArmHardwareInterface"
+           type="taihu_dual_arm_hardware::TaihuDualArmHardwareInterface"
+           base_class_type="hardware_interface::SystemInterface">
+        <description>
+            Hardware interface for TaihuDualArm Robots
+        </description>
+    </class>
+</library>

@@ -1,0 +1,23 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: taihu_dual_arm_description
+    relative_path: urdf/taihu_revo1_description.urdf
+  srdf:
+    relative_path: config/taihu_revo1_description.srdf
+  package_settings:
+    author_name: jing
+    author_email: jing@163.com
+    generated_timestamp: 1755590799
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position

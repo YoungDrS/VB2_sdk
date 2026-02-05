@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="taihu_revo1_description">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+
+    <!-- Import taihu_revo1_description urdf file -->
+    <xacro:include filename="$(find taihu_dual_arm_description)/urdf/taihu_revo1_description.urdf" />
+
+    <!-- Import control_xacro -->
+    <xacro:include filename="taihu_revo1_description.ros2_control.xacro" />
+
+
+    <xacro:taihu_revo1_description_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+
+</robot>

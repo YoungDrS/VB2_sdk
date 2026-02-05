@@ -1,0 +1,9 @@
+<library path="brainco_control">
+  <class name="brainco_control/BraincoRevo1Hardware"
+         type="brainco_control::BraincoRevo1Hardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+    BraincoRevo1SystemHardware using a system hardware interface-type.
+    </description>
+  </class>
+</library>

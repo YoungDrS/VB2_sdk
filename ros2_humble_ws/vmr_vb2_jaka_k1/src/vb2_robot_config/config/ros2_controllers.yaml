@@ -1,0 +1,194 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 125  # Hz
+
+    left_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    right_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    waist_group_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    head_group_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    left_index_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    left_middle_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    left_thumb_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    left_ring_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    left_little_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_thumb_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    right_index_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    right_middle_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    right_ring_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    right_little_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+left_arm_controller:
+  ros__parameters:
+    joints:
+      - l_j1
+      - l_j2
+      - l_j3
+      - l_j4
+      - l_j5
+      - l_j6
+      - l_j7
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_arm_controller:
+  ros__parameters:
+    joints:
+      - r_j1
+      - r_j2
+      - r_j3
+      - r_j4
+      - r_j5
+      - r_j6
+      - r_j7
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+waist_group_controller:
+  ros__parameters:
+    joints:
+      - waist_lift_joint
+      - waist_rotate_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+head_group_controller:
+  ros__parameters:
+    joints:
+      - head_up_down_joint
+      - head_left_right_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+left_index_controller:
+  ros__parameters:
+    joints:
+      - left_hand_indexMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+left_middle_controller:
+  ros__parameters:
+    joints:
+      - left_hand_middleMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+left_thumb_controller:
+  ros__parameters:
+    joints:
+      - left_hand_thumbCMC
+      - left_hand_thumbMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+left_ring_controller:
+  ros__parameters:
+    joints:
+      - left_hand_ringMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+left_little_controller:
+  ros__parameters:
+    joints:
+      - left_hand_littleMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_thumb_controller:
+  ros__parameters:
+    joints:
+      - right_hand_thumbCMC
+      - right_hand_thumbMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_index_controller:
+  ros__parameters:
+    joints:
+      - right_hand_indexMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_middle_controller:
+  ros__parameters:
+    joints:
+      - right_hand_middleMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_ring_controller:
+  ros__parameters:
+    joints:
+      - right_hand_ringMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+right_little_controller:
+  ros__parameters:
+    joints:
+      - right_hand_littleMCP
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position

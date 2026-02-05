@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="taihu_revo2_description_ros2_control" params="name initial_positions_file">
+        <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
+
+        <ros2_control name="${name}_arm" type="system">
+            <hardware>
+                <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+                <plugin>mock_components/GenericSystem</plugin>
+                <!-- <plugin>taihu_dual_arm_hardware/TaihuDualArmHardwareInterface</plugin> -->
+                <param name="gear_ratio">110</param>
+                <param name="compensation_factor">1.5 1.5 1.5 1.5 1.5 1.3 1.2 1.5 1.5 1.5 1.5 1.5 1.3 1.2</param>
+                <param name="torque_constant">0.096 0.096 0.089 0.089 0.05 0.024 0.024 0.096 0.096 0.089 0.089 0.05 0.024 0.024</param>
+                <param name="urdf_path">/home/jack/ros2_humble/ros2_ws/ws_taihu_dual_arm/src/taihu_dual_arm_description/urdf/taihu_no_hand.urdf</param>
+            </hardware>
+            <joint name="L_SHOULDER_P">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_SHOULDER_P']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_SHOULDER_R">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_SHOULDER_R']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_SHOULDER_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_SHOULDER_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_ELBOW_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_ELBOW_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_WRIST_P">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_WRIST_P']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_WRIST_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_WRIST_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="L_WRIST_R">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['L_WRIST_R']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_SHOULDER_P">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_SHOULDER_P']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_SHOULDER_R">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_SHOULDER_R']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_SHOULDER_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_SHOULDER_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_ELBOW_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_ELBOW_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_WRIST_P">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_WRIST_P']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_WRIST_Y">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_WRIST_Y']}</param>
+                </state_interface>
+            </joint>
+            <joint name="R_WRIST_R">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['R_WRIST_R']}</param>
+                </state_interface>
+            </joint>
+        </ros2_control>
+
+
+        <ros2_control name="${name}_waist" type="system">
+            <hardware>
+                <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+                <plugin>mock_components/GenericSystem</plugin>
+            </hardware>
+            <joint name="waist_rotate_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['waist_rotate_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="waist_lift_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['waist_lift_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+        </ros2_control>
+
+
+        <ros2_control name="${name}_left_hand" type="system">
+            <hardware>
+                <!-- By default, set up controllers for simulation. This won't work on real hardware -->
+                <plugin>mock_components/GenericSystem</plugin>
+            </hardware>
+            <joint name="left_index_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_index_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="left_middle_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_middle_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="left_pinky_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_pinky_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="left_ring_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_ring_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="left_thumb_metacarpal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_thumb_metacarpal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="left_thumb_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_thumb_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_index_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_index_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_middle_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_middle_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_pinky_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_pinky_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_ring_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_ring_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_thumb_metacarpal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_thumb_metacarpal_joint']}</param>
+                </state_interface>
+            </joint>
+            <joint name="right_thumb_proximal_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_thumb_proximal_joint']}</param>
+                </state_interface>
+            </joint>
+        </ros2_control>
+    </xacro:macro>
+</robot>
