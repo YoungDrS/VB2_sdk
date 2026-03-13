@@ -1,51 +1,57 @@
-# 多关节控制（ROS2 C++）
+# Multi-Joint Control (ROS2 C++)
 
-最简 ROS2 C++ 包：`multi_joint_controller`
+A minimal ROS2 C++ control package: `multi_joint_controller`.
 
-## 控制模式（`control_target`）
-- `waistd`（或 `waist`）
-  - control: `/vmr/waist_joint_control`
-  - state: `/vmr/waist_joint_state`
-  - 控制策略：步进+缓启动+接近目标减速+到位退出
-- `rotatehead`
-  - control: `/vmr/head_joint_control_1`
-  - state: `/vmr/head_joint_state_1`
-  - 控制策略：步进+缓启动+接近目标减速+到位退出
-- `nodhead`
-  - control: `/vmr/head_joint_control_2`
-  - state: `/vmr/head_joint_state_2`
-  - 控制策略：步进+缓启动+接近目标减速+到位退出
-- `raise`
-  - control: `/vmr/raise_control`
-  - state: `/vmr/raise_state`
-  - 控制策略：只发目标点，不做步进
-  - 限制：目标值只使用 `target_position[0]`，并强制限制在 `[0.0, 0.2]`
+> **⚠️ Architecture Note**
+> All hardware devices within the `others` directory are directly managed by the chassis controller. Consequently, the main control unit (Orin) cannot access their low-level hardware interfaces directly and must control these devices via ROS 2 communication.
 
-## 参数
-- `control_target` (string)：`waistd` / `rotatehead` / `nodhead` / `raise`，默认 `waistd`
-- `target_position` (double[])：目标角度（弧度），默认 `[0.0]`
-- `threshold` (double)：到位阈值（弧度），默认 `0.01`（仅步进模式使用）
-- `period` (double)：控制周期（秒），默认 `0.02`
-- `step_deg` (double)：每周期最大步进（角度），默认 `0.2`（仅步进模式使用）
+## Control Targets (`control_target`)
 
-## 编译
+* **`waistd` (or `waist`)**
+  * Control Topic: `/vmr/waist_joint_control`
+  * State Topic: `/vmr/waist_joint_state`
+  * Control Strategy: Stepping control + soft start + deceleration upon approaching the target + exit upon reaching the position.
+* **`rotatehead`**
+  * Control Topic: `/vmr/head_joint_control_1`
+  * State Topic: `/vmr/head_joint_state_1`
+  * Control Strategy: Stepping control + soft start + deceleration upon approaching the target + exit upon reaching the position.
+* **`nodhead`**
+  * Control Topic: `/vmr/head_joint_control_2`
+  * State Topic: `/vmr/head_joint_state_2`
+  * Control Strategy: Stepping control + soft start + deceleration upon approaching the target + exit upon reaching the position.
+* **`raise`**
+  * Control Topic: `/vmr/raise_control`
+  * State Topic: `/vmr/raise_state`
+  * Control Strategy: Directly sends the target point command without stepping control.
+  * Constraint: The target value only uses `target_position[0]` and is strictly clamped to the range `[0.0, 0.2]`.
+
+## Parameters
+
+* `control_target` (string): The target to control. Options are `waistd` / `rotatehead` / `nodhead` / `raise`. Default: `waistd`.
+* `target_position` (double[]): Target angle(s) in radians. Default: `[0.0]`.
+* `threshold` (double): Position reached threshold in radians. Default: `0.01` (Only active in stepping mode).
+* `period` (double): Control loop period in seconds. Default: `0.02`.
+* `step_deg` (double): Maximum step size per period in degrees. Default: `0.2` (Only active in stepping mode).
+
+## Build Instructions
+
 ```bash
 colcon build --packages-select multi_joint_controller
 ```
 
-## 运行示例
+## Running Examples
 ```bash
 source install/setup.bash
 
-# waistd
+# Control waistd
 ros2 run multi_joint_controller multi_joint_controller_node --ros-args -p control_target:=waistd -p target_position:="[0.5]"
 
-# rotatehead
+# Control rotatehead
 ros2 run multi_joint_controller multi_joint_controller_node --ros-args -p control_target:=rotatehead -p target_position:="[0.3]"
 
-# nodhead
+# Control nodhead
 ros2 run multi_joint_controller multi_joint_controller_node --ros-args -p control_target:=nodhead -p target_position:="[-0.2]"
 
-# raise（会自动限制到 [0.0, 0.2]）
+# Control raise (automatically clamped to [0.0, 0.2])
 ros2 run multi_joint_controller multi_joint_controller_node --ros-args -p control_target:=raise -p target_position:="[0.15]"
 ```

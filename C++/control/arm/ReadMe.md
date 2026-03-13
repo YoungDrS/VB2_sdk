@@ -1,11 +1,12 @@
-# 全身控制
+# Whole-Body Control
 
-### 机械臂sdk选择
+### Robotic Arm SDK Selection
 
-根据选配不同，所使用机械臂型号区分为为钛虎，节卡等，钛虎机械臂开放程度较高，开放到底层can通信, 而节卡等机械臂开放程度较低，是直接以其官方sdk进行开发
+Depending on the hardware configuration, the supported robotic arm models include Taihu, JAKA, and others. The Taihu robotic arm offers a high degree of openness, providing access down to the low-level CAN bus communication. In contrast, robotic arms like JAKA have a more restricted architecture and require development using their official proprietary SDKs.
 
+JAKA K1 Robotic Arm SDK Repository:
+https://github.com/JAKARobotics/JAKA_K1
 
+### Development Recommendations
 
-### 开发建议
-
-可参考每一个设备控制中的example代码进行开发
+It is highly recommended to reference the example code provided within each device's control module to guide your development process.
